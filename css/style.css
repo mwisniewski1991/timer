@@ -41,17 +41,31 @@ body {
 .time-box {
   display: flex; }
   .time-box__detail {
-    text-transform: lowercase; }
+    text-transform: lowercase;
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
     .time-box__detail:not(:last-child) {
       margin-right: 6rem; }
   .time-box__name {
-    font-size: 5rem;
+    font-size: 4rem;
     text-align: center; }
+  .time-box__btn {
+    font-size: 2rem; }
   .time-box__count {
-    font-size: 15rem; }
+    font-size: 18rem; }
+    .time-box__count--special {
+      position: relative; }
+      .time-box__count--special::after {
+        content: ":";
+        position: absolute;
+        right: -4.5rem;
+        top: -1rem; }
 
-.menu__btn:first-child {
-  margin-right: 10rem; }
+.menu__btn {
+  font-size: 2.5rem; }
+  .menu__btn:first-child {
+    margin-right: 10rem; }
 
 .footer {
   height: 10vh;
@@ -61,8 +75,9 @@ body {
   align-items: center; }
 
 .heading-one {
-  font-size: 5rem;
-  letter-spacing: 5rem; }
+  font-size: 7rem;
+  letter-spacing: 5rem;
+  margin-right: -5rem; }
 
 .btn {
   border: 0;
@@ -70,12 +85,17 @@ body {
   outline: none;
   background-color: #333;
   cursor: pointer;
-  width: 15rem;
-  height: 5rem;
   font-family: inherit;
   color: inherit;
-  font-size: 2.5rem;
   border: 1px dashed #FB5D3F;
   border-radius: 15px; }
   .btn:hover {
     background-color: #404040; }
+  .btn:focus {
+    border: 1px solid #FB5D3F;
+    box-shadow: 0 0 10px 1px #fff; }
+  .btn--change {
+    width: 10rem; }
+  .btn--menu {
+    width: 15rem;
+    height: 5rem; }
