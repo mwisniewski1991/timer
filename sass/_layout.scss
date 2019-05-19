@@ -22,10 +22,18 @@
     
     display: flex;
 
+    // &__top{
+    //     display: flex;
+    //     flex-direction: row;
+    // }
     
 
     &__detail{
         text-transform: lowercase;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
 
         &:not(:last-child){
             margin-right: 6rem;
@@ -33,14 +41,28 @@
     }
 
     &__name{
-        font-size: 5rem;
+        font-size: 4rem;
         text-align: center;
         
     }
 
+    &__btn{
+        font-size: 2rem;
+    }
+
     &__count{
-        font-size: 15rem;
-     
+        font-size: 18rem;
+
+        &--special{
+            position: relative;
+
+            &::after{
+                content: ":";
+                position: absolute;
+                right: -4.5rem;
+                top: -1rem;
+            }
+        }
     }
 
     &__num{
@@ -51,6 +73,7 @@
 .menu{
 
     &__btn{
+        font-size: 2.5rem;
         
         &:first-child{
             margin-right: 10rem;
