@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Exo:400,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+    <title>TIMER</title>
+</head>
+
+<body>
+    <header class="header">
+        <h1 class="heading-one">TIMER</h1>
+    </header>
+
+    <main class="main">
+
+        <div class="time-box">
+            <div class="time-box__detail">
+                <h2 class="time-box__name">Hour</h2>
+                <div class="time-box__count">
+                    <span class="time-box__num time-box__num--hours">00</span>
+                </div>
+            </div>
+
+            <div class="time-box__detail">
+                <h2 class="time-box__name">Mins</h2>
+                <div class="time-box__count">
+                    <span class="time-box__num time-box__num--minutes">00</span>
+                </div>
+            </div>
+            
+            <div class="time-box__detail">
+                <h2 class="time-box__name">Secs</h2>
+                <div class="time-box__count">
+                    <span class="time-box__num time-box__num--seconds">00</span>
+                </div>
+            </div>
+        </div>
+        <menu>
+            <button class="menu__btn btn">Start</button>
+            <button class="menu__btn btn">Restart</button>
+        </menu>
+
+    </main>
+
+    <footer class="footer"><span class="footer__span">By Mateusz Wisniewski</span></footer>
+
+    <script src="node_modules/moment/moment.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
