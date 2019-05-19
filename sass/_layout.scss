@@ -1,0 +1,69 @@
+
+
+.header{
+    height: $header-height;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main{
+    height: $main-height;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.time-box{
+    
+    display: flex;
+
+    
+
+    &__detail{
+        text-transform: lowercase;
+
+        &:not(:last-child){
+            margin-right: 6rem;
+        }
+    }
+
+    &__name{
+        font-size: 5rem;
+        text-align: center;
+        
+    }
+
+    &__count{
+        font-size: 15rem;
+     
+    }
+
+    &__num{
+
+    }
+}
+
+.menu{
+
+    &__btn{
+        
+        &:first-child{
+            margin-right: 10rem;
+        }
+    }
+}
+
+.footer{
+    height: $footer-height;
+    font-size: 2rem;
+
+    // text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
