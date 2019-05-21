@@ -13,10 +13,11 @@
    
     font-family: inherit;
     color: inherit;
-    // font-size: 2.5rem;
 
     border: 1px dashed $color-four-1;
     border-radius: 15px;
+
+    transition: all .2s;
 
     &:hover{
         background-color: lighten(#333, 5%);         
@@ -24,7 +25,11 @@
 
     &:focus{
         border: 1px solid $color-four-1;
-        box-shadow: 0 0 10px 1px $color-white;
+                box-shadow: 0 0 1px 1px $color-white;
+    }
+
+    &:active{
+        transform: translateY(2px);
     }
 
 
