@@ -88,12 +88,15 @@ body {
   font-family: inherit;
   color: inherit;
   border: 1px dashed #FB5D3F;
-  border-radius: 15px; }
+  border-radius: 15px;
+  transition: all .2s; }
   .btn:hover {
     background-color: #404040; }
   .btn:focus {
     border: 1px solid #FB5D3F;
-    box-shadow: 0 0 10px 1px #fff; }
+    box-shadow: 0 0 1px 1px #fff; }
+  .btn:active {
+    transform: translateY(2px); }
   .btn--change {
     width: 10rem; }
   .btn--menu {
