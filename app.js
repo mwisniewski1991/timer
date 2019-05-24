@@ -1,5 +1,11 @@
+
 timeController = (function(){
 
+    const timeData = {
+        mins: 0,
+        secs: 0,
+        msec: 0
+    }
     
 
     return {
@@ -9,6 +15,24 @@ timeController = (function(){
             endTime = moment().add(5, 'min');
 
             return [startTime, endTime];
+        },
+
+        updateTime: function(calc, type){
+            if(calc === "plus"){
+                timeData[type] = timeData[type] + 1;
+            }
+            else{
+                if(timeData[type] - 1 < 0){
+                    timeData[type] = 0;
+                }
+                else{
+                    timeData[type] = timeData[type] - 1;
+                }
+            }
+        },
+
+        test: function(){
+            return timeData;
         }
     }
 })();
@@ -16,43 +40,80 @@ timeController = (function(){
 
 UIcontroller = (function(){
 
+    //PUT DOM ELEMENTS INTO OBJECT
     const DOMstrings = {
         mins: '.time-box__num--mins',
         secs: '.time-box__num--secs',
-        msec: '.time-box__num--msec'
+        msec: '.time-box__num--msec',
+        buttonsChange: '.btn--change' 
 
 
     }
 
-
     return{
-
-        updateDOM: function(arr){
+        
+        //UPDATE TIMERS DOM
+        updateDOM: function(obj){
 
             //destructuring array
-            [mins, secs, msec] = arr;
+            // [mins, secs, msec] = arr;
+            {mins, secs, msec = obj};
 
             //SELECT AND UPDATE DOM
             document.querySelector(DOMstrings.mins).textContent = mins;
             document.querySelector(DOMstrings.secs).textContent = secs;
             document.querySelector(DOMstrings.msec).textContent = msec;
 
+        },
+
+        //RETURN DOM ELEMENTS
+        getDOM: function(){
+            return DOMstrings;
         }
     }
 })();
 
 
-controller = (function(){
+controller = (function(timeCtrl, UICtrl){
+
+    const DOM = UICtrl.getDOM();
+
+
+    const update = function(event){
+        //GET TARGET ID AND SPLIT TO GET INFO WHAT CALCULATION WITH DATA IS NEEDES
+        const calc = event.target.id.split('-')[0];
+        const type = event.target.id.split('-')[1];
+
+        //FUNCTION TO UPDATE DATA
+        timeCtrl.updateTime(calc, type);
+        console.log(timeCtrl.test());
+
+        //FUNCTION TO UDPATE DOM
+
+
+    }
+
+    const addEvents = function(){
+
+        const buttons = document.querySelectorAll(DOM.buttonsChange);
+
+        //ADD UPDATE BUTTON
+        for(let i = 0; i < buttons.length; i++){
+            buttons[i].addEventListener('click', update);
+        }
+
+    }
 
 
     return {
-        test: function(){
-
-
+        init: function(){
+            addEvents();
         }
     }
-})();
+})(timeController, UIcontroller);
 
+
+controller.init();
 
 // const test = function(){
 
@@ -125,7 +186,7 @@ const test = function(){
 
     check();
 
-}();
+};
 
 
 
