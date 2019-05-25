@@ -5,17 +5,8 @@ timeController = (function(){
         secs: 0,
         msec: 0
     }
-    
 
     return {
-        test: function(){
-
-            startTime = moment();
-            endTime = moment().add(5, 'min');
-
-            return [startTime, endTime];
-        },
-
         updateTime: function(calc, type){
             if(calc === "plus"){
                 timeData[type] = timeData[type] + 1;
@@ -51,7 +42,8 @@ UIcontroller = (function(){
         secs: '.time-box__num--secs',
         msec: '.time-box__num--msec',
         buttonsChange: '.btn--change',
-        startButton: '#start'
+        startButton: '#start',
+        resetButton: '#restart'
     }
 
     return{
@@ -87,6 +79,9 @@ controller = (function(timeCtrl, UICtrl){
     //GET DOM FROM UI CTRL
     const DOM = UICtrl.getDOM();
 
+    //VARIABLE TO START AND STOP COUNTDOWN
+    let countdownCheck = true;
+
     //UPDATE DATA TIME AND UI TIME 
     const update = function(event){
         //GET TARGET ID AND SPLIT TO GET INFO WHAT CALCULATION WITH DATA IS NEEDES
@@ -106,6 +101,10 @@ controller = (function(timeCtrl, UICtrl){
     //COUNTDOWN
     const countdown = function(){
 
+        //AFTER STOPPED FUNCTION NEED TO CHANGE VAIRABLE AND TEXT CONTENT IN BUTTON
+        countdownCheck = true;
+        document.querySelector(DOM.resetButton).textContent = "Stop";
+
         
         //GET DATA FROM OBJECT
         const {mins, secs, msec} = timeCtrl.getData();
@@ -118,44 +117,68 @@ controller = (function(timeCtrl, UICtrl){
 
                 const check = function(){
 
-                    //SET UP START TIME - CHANGE ON EVERY LOOP
-                    let startTime = moment();
-                    
-                    //check if end time is still higher than end
-                    if(endTime>startTime){
-            
-                        //wait moment until next counting
-                        setTimeout(loop = function(endtime){
-            
-                            //CALCULATE DIFFRENCES
-                            let mins = endTime.diff(startTime, 'minutes');
-                            let secs = endTime.diff(startTime, 'seconds') - mins * 60;  //CALCULATED HOW MUCH SECONDS LEFT
-                            let msec = endTime.diff(startTime) - (mins * 60 * 1000) - (secs * 1000); //CALCULATED HOW MUCH MILISECONDS LEFT
-                    
+                    if(countdownCheck){
+                        //SET UP START TIME - CHANGE ON EVERY LOOP
+                        let startTime = moment();
+                        
+                        //check if end time is still higher than end
+                        if(endTime>startTime){
+                
+                            //wait moment until next counting
+                            setTimeout(loop = function(endtime){
+                
+                                //CALCULATE DIFFRENCES
+                                let mins = endTime.diff(startTime, 'minutes');
+                                let secs = endTime.diff(startTime, 'seconds') - mins * 60;  //CALCULATED HOW MUCH SECONDS LEFT
+                                let msec = endTime.diff(startTime) - (mins * 60 * 1000) - (secs * 1000); //CALCULATED HOW MUCH MILISECONDS LEFT
+                        
+                                //UPDATE DATA TIME
+                                timeCtrl.updateTimeCount(mins, secs, msec);
+                                
+                                //UPDATE DOM
+                                const data = timeCtrl.getData();
+                                UICtrl.updateDOM(data);
+                
+                
+                                //REPEAT LOOP
+                                check();
+                            }, 100);
+                        }
+                        else{
+                            //FINISH FUNCTION
                             //UPDATE DATA TIME
-                            timeCtrl.updateTimeCount(mins, secs, msec);
-                            
+                            timeCtrl.updateTimeCount(0, 0, 0);
                             //UPDATE DOM
                             const data = timeCtrl.getData();
                             UICtrl.updateDOM(data);
-            
-            
-                            //REPEAT LOOP
-                            check();
-                        }, 100);
-                    }
-                    else{
-                        //FINISH FUNCTION
-                        //UPDATE DATA TIME
-                        timeCtrl.updateTimeCount(0, 0, 0);
-                        //UPDATE DOM
-                        const data = timeCtrl.getData();
-                        UICtrl.updateDOM(data);
+                        }
                     }
                 };
         //START CHECKING FUNCTION
         check();
         
+    }
+
+    //STOP COUNTDOWN
+    const stop = function(){
+        //CHECK IF COUNTDOWN IS STOP
+        if (countdownCheck){
+            //IF NO STOP IT
+            //CHANGE VARIABLE AND STOP COUNTDOWN
+            countdownCheck = false;
+            //CHANGE DOM NAME FROM STOP TO RESET
+            document.querySelector(DOM.resetButton).textContent = "Reset";
+        }
+        else{
+            //UPDATE DATA TIME
+            timeCtrl.updateTimeCount(0, 0, 0);
+            //UPDATE DOM
+            const data = timeCtrl.getData();
+            UICtrl.updateDOM(data);
+
+             //CHANGE DOM NAME FROM RESET TO STOP
+             document.querySelector(DOM.resetButton).textContent = "Stop";
+        }
     }
 
     //ADD EVENT LISTENERS TO BUTTONS
@@ -171,6 +194,10 @@ controller = (function(timeCtrl, UICtrl){
         //START COUNTDOWN
         const startButton = document.querySelector(DOM.startButton);
         startButton.addEventListener('click', countdown);
+
+        //STOP COUNT DOWN
+        const resetButton = document.querySelector(DOM.resetButton);
+        resetButton.addEventListener("click", stop)
     }
 
 
@@ -181,5 +208,5 @@ controller = (function(timeCtrl, UICtrl){
     }
 })(timeController, UIcontroller);
 
-
+//ONLOAD FUNCTION
 controller.init();
