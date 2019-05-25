@@ -37,6 +37,9 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column; }
+  @media screen and (max-width: 600px) {
+    .main {
+      height: 50rem; } }
 
 .time-box {
   display: flex; }
@@ -47,13 +50,29 @@ body {
     align-items: center; }
     .time-box__detail:not(:last-child) {
       margin-right: 6rem; }
+      @media screen and (max-width: 600px) {
+        .time-box__detail:not(:last-child) {
+          margin-right: 0rem; }
+          .time-box__detail:not(:last-child):first-child {
+            margin-right: 6rem; } }
+    @media screen and (max-width: 600px) {
+      .time-box__detail {
+        font-size: 43.75%; }
+        .time-box__detail:nth-child(2) .time-box__count::after {
+          content: none; } }
+    @media screen and (max-width: 600px) {
+      .time-box__detail:last-child {
+        display: none; } }
   .time-box__name {
     font-size: 4rem;
     text-align: center; }
   .time-box__btn {
     font-size: 2rem; }
   .time-box__count {
-    font-size: 18rem; }
+    font-size: 18rem;
+    width: 24rem;
+    display: flex;
+    justify-content: center; }
     .time-box__count--special {
       position: relative; }
       .time-box__count--special::after {
