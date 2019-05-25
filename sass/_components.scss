@@ -35,6 +35,13 @@
 
     &--change{
         width: 10rem;
+
+        @media screen and (max-width: 600px){
+            width: 12rem;
+            height: 5rem;
+
+            font-size: 2.5rem;
+        }
     }
 
     &--menu{
