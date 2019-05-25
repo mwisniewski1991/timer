@@ -39,7 +39,7 @@ body {
   flex-direction: column; }
   @media screen and (max-width: 600px) {
     .main {
-      height: 50rem; } }
+      height: auto; } }
 
 .time-box {
   display: flex; }
