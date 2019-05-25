@@ -16,6 +16,9 @@
     align-items: center;
     flex-direction: column;
 
+    @media screen and (max-width: 600px){
+        height: 50rem;
+    }
 }
 
 .time-box{
@@ -37,7 +40,37 @@
 
         &:not(:last-child){
             margin-right: 6rem;
+
+            @media screen and (max-width: 600px){
+                margin-right: 0rem;
+
+                &:first-child{
+                    margin-right: 6rem;
+                }
+            }
         }
+
+        //REMOVE SIGN : ON WIDTH 600 PX
+        @media screen and (max-width: 600px){
+            font-size: 43.75%; //1rem = 7px
+            &:nth-child(2){
+
+                & .time-box__count{
+                    &::after{
+                        content: none;
+                    }
+                }
+            }
+        }
+
+        //HIDE MILISECONDS ON WIDTH 600PX 
+        @media screen and (max-width: 600px){
+            &:last-child{
+                display: none;
+            }
+        }
+
+    
     }
 
     &__name{
@@ -52,6 +85,10 @@
 
     &__count{
         font-size: 18rem;
+        width: 24rem;
+
+        display: flex;
+        justify-content: center;
 
         &--special{
             position: relative;
