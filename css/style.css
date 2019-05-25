@@ -120,6 +120,11 @@ body {
     transform: translateY(2px); }
   .btn--change {
     width: 10rem; }
+    @media screen and (max-width: 600px) {
+      .btn--change {
+        width: 12rem;
+        height: 5rem;
+        font-size: 2.5rem; } }
   .btn--menu {
     width: 15rem;
     height: 5rem; }
