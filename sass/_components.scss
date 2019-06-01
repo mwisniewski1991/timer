@@ -9,30 +9,38 @@
     background: transparent;
     outline: none;
     background-color: #333;    
-    cursor: pointer;     
    
     font-family: inherit;
     color: inherit;
 
-    border: 1px dashed $color-four-1;
     border-radius: 15px;
 
     transition: all .2s;
 
-    &:hover{
-        background-color: lighten(#333, 5%);         
+    &__active{
+        border: 1px dashed $color-four-1;
+        cursor: pointer;     
+
+        &:hover{
+            background-color: lighten(#333, 5%);         
+        }
+    
+        &:focus{
+            border: 1px solid $color-four-1;
+                    box-shadow: 0 0 1px 1px $color-white;
+        }
+    
+        &:active{
+            transform: translateY(2px);
+        }
     }
 
-    &:focus{
-        border: 1px solid $color-four-1;
-                box-shadow: 0 0 1px 1px $color-white;
+    &__disactive{
+        color: $color-grey;
+        border: 1px dashed $color-grey-bgc;
     }
 
-    &:active{
-        transform: translateY(2px);
-    }
-
-
+    
     &--change{
         width: 10rem;
 
@@ -48,4 +56,6 @@
         width: 15rem;
         height: 5rem;
     }
+
+
 }
