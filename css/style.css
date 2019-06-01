@@ -121,7 +121,7 @@ body {
       transform: translateY(2px); }
   .btn__disactive {
     color: #222;
-    border: 1px dashed #333; }
+    border: 1px dashed #222; }
   .btn--change {
     width: 10rem; }
     @media screen and (max-width: 600px) {
