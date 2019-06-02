@@ -129,7 +129,7 @@ controller = (function(timeCtrl, UICtrl){
 
         //CHECK IF COUNTDOWN IS ACTIVE. AVOID SITUATION WHERE START COUTNING TWICE
         //START ONLY WHEN TIME IS BIGGER THAN 0
-        if(countdownCheck === false && mins >0 || secs>0 || msec > 0){
+        if(countdownCheck === false){
             
             //AFTER STOPPED FUNCTION NEED TO CHANGE VAIRABLE AND TEXT CONTENT IN BUTTON
             countdownCheck = true;
