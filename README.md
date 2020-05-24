@@ -1,8 +1,20 @@
 # Timer
+#### Live: https://mwisniewski1991.github.io/timer/
 
-Link: https://mwisniewski1991.github.io/timer/
+## Goal
+Create simple timer app. 
 
-Stack:
-- html
-- css sass(scss)
-- js moment.js
+## Stack
+SCSS\
+Vanilla JS
+- moment.js
+
+## Project details
+One page app, Timer great when you cook eggs. ;)
+User can choose mins, secs, msec to countdown. 
+
+## Developer:
+**Mateusz Wiśniewski**
+
+Check my other repositories:
+https://github.com/mwisniewski1991?tab=repositories

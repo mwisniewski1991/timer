@@ -9,6 +9,7 @@ timeController = (function(){
     return {
         updateTime: function(calc, type){
             //add time
+            
             if(calc === "plus"){
                 timeData[type] = timeData[type] + 1;
             }
@@ -128,7 +129,6 @@ controller = (function(timeCtrl, UICtrl){
         const {mins, secs, msec} = timeCtrl.getData();
 
         //CHECK IF COUNTDOWN IS ACTIVE. AVOID SITUATION WHERE START COUTNING TWICE
-        //START ONLY WHEN TIME IS BIGGER THAN 0
         if(countdownCheck === false){
             
             //AFTER STOPPED FUNCTION NEED TO CHANGE VAIRABLE AND TEXT CONTENT IN BUTTON
